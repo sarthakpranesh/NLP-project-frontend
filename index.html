@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NLP-Project</title>
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+        <script>
+          document.addEventListener("DOMContentLoaded", function(){
+            $('.preloader-background').delay(1700).fadeOut('slow');
+            
+            $('.preloader-wrapper')
+              .delay(1700)
+              .fadeOut();
+          });
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- materialize stuff -->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+        <!-- Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+      <!--preloader here-->
+      <div class="preloader-background">
+          <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!--Navbar section-->
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Texter</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/team.html">Team</a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/team.html">Team</a></li>
+      </ul>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Text For Your Help</span>
+              <p id="predicted">Don't Worry We Got Your Back</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue darken-1">
+            <div class="card-content white-text" id="inputForm">
+              <textarea placeholder="Type Something Here" id="text" autofocus maxlength="500" wrap="hard"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+    </body>
+    <script>
+      document.getElementById("text").addEventListener("keyup",async function(e){
+        e.preventDefault()
+        var text = document.getElementById("text").value
+        text = text.split(".")
+        text = text[text.length - 1]
+        const url = "https://auto-text-generation.herokuapp.com/?text="+text
+        fetch(url, {
+          method: 'GET',
+          headers: new Headers(),
+        })
+        .then(async (resp)=>{
+          const data = await resp.json()
+          const prediction = data.payload.prediction
+          const error = data.payload.error
+          if(error === null){
+            var p = document.getElementById("predicted")
+            p.innerHTML = prediction
+          } else if(error !== null){
+            alert(error)
+          }
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+      })
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
+    </script>
+</html>

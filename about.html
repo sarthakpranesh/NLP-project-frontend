@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NLP-Project</title>
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+        <script>
+          document.addEventListener("DOMContentLoaded", function(){
+            $('.preloader-background').delay(1700).fadeOut('slow');
+            
+            $('.preloader-wrapper')
+              .delay(1700)
+              .fadeOut();
+          });
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- materialize stuff -->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+        <!-- Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+        <!--preloader here-->
+        <div class="preloader-background">
+            <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Navbar section-->
+        <nav>
+            <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">About</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="badges.html">About</a></li>
+                <li><a href="/team.html">Team</a></li>
+            </ul>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/team.html">Team</a></li>
+        </ul>
+
+        <div class="card large" id="about-card">
+            <div class="card-image waves-effect waves-block waves-light" style="max-height: 75vh;">
+                <img class="activator" style="height: 70vh; object-fit: cover;" src="/img/d.jpeg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Dyslexia<i class="material-icons right">more_vert</i></span>
+                <p>This is a very Rare but equally dangerous learning disorder. Click the three dots to know more...</p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Understanding Dyslexia<i class="material-icons right">close</i></span>
+                <p>Dyslexia is a specific learning disability in reading, writing and math. Kids with dyslexia have trouble spelling things right.
+                    Dyslexia is a lifelong condition that makes it hard for people learn. It’s very common, although it’s not clear what percentage of kids have it. 
+                    <br/>
+                    <br/>
+                    Some experts say the number is between 5 and 10 percent. Others say as many as 17 percent of people show signs of reading challenges. 
+                    The reason for the wide range is that experts may define dyslexia in different ways.
+                    <br/>
+                    <br/>
+                    Kids don’t outgrow dyslexia. But there are supports, teaching approaches, and strategies to help them manage their challenges and 
+                    thrive in school and beyond.
+                    <br/>
+                    <br/>
+                    This project is targeted to help kids suffering from dyslexia frame proper grammatical sentence by looking at the help text provided at the top.
+                    The project uses a NLP model build with love using keras and trained on a huge dataset so that it gets as close as the actual sentence that the
+                    kid wants to write helping them know the correct grammer before hand so they can frame proper sentences and learn.
+                </p>
+            </div>
+        </div>
+
+    </body>
+    <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
+    </script>
+</html>
